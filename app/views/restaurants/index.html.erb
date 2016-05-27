@@ -12,7 +12,9 @@
 <% else %>
   <h2>No restaurants yet</h2>
 <% end %>
+
 <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
