@@ -37,6 +37,15 @@ feature 'restaurants' do
       expect(page).to have_content 'KFC'
       expect(current_path).to eq '/restaurants'
     end
+    scenario 'a picture can be added to the restaurant' do
+      visit '/restaurants'
+      click_link  'Add a restaurant'
+      fill_in 'Name', with: 'Maccy Ds'
+      page.attach_file('restaurant_image', './public/kfc.jpg')
+      click_button 'Create Restaurant'
+    #  expect(page).to have_xpath("//img[@src='./public/kfc.jpg']")
+      expect(page).to have_css("img[src*='kfc.jpg']")
+    end
     context ' an invalid restaurant' do
       it 'does not let you submit a name that is too short' do
         visit '/restaurants'
